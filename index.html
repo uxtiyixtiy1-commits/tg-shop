@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>KATALOG</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+<style>
+body{
+  font-family: Arial;
+  background:#111;
+  color:white;
+  text-align:center;
+}
+
+.item{
+  background:#1c1c1c;
+  margin:15px;
+  padding:15px;
+  border-radius:12px;
+}
+
+button{
+  background:#00a86b;
+  border:none;
+  padding:10px 20px;
+  border-radius:8px;
+  color:white;
+  font-size:16px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>KATALOG</h1>
+
+<div class="item">
+<h2>Sushi set</h2>
+<p>50 000 so'm</p>
+<button onclick="order('Sushi set')">Buyurtma</button>
+</div>
+
+<div class="item">
+<h2>Pizza</h2>
+<p>70 000 so'm</p>
+<button onclick="order('Pizza')">Buyurtma</button>
+</div>
+
+<div class="item">
+<h2>Wok</h2>
+<p>40 000 so'm</p>
+<button onclick="order('Wok')">Buyurtma</button>
+</div>
+
+<script>
+function order(name){
+  Telegram.WebApp.sendData(name);
+}
+</script>
+
+</body>
+</html>
