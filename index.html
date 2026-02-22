@@ -5,197 +5,94 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Katana Sushi</title>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+body{
+  margin:0;
+  font-family:Arial;
+  background:#0f2027;
+  color:white;
 }
 
-body {
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: white;
-  padding: 20px;
-  overflow-x: hidden;
+.header{
+  padding:20px;
+  text-align:center;
+  font-size:26px;
+  font-weight:bold;
 }
 
-/* Header */
-.header {
-  text-align: center;
-  margin-bottom: 30px;
-  animation: fadeDown 1s ease;
+#products{
+  padding:15px;
 }
 
-.header h1 {
-  font-size: 28px;
-  font-weight: bold;
+.card{
+  background:#1e3c48;
+  border-radius:14px;
+  padding:16px;
+  margin-bottom:12px;
 }
 
-.header p {
-  opacity: 0.7;
-  margin-top: 5px;
-}
-
-/* Cards */
-.products {
-  display: grid;
-  gap: 20px;
-}
-
-.card {
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(15px);
-  border-radius: 20px;
-  padding: 15px;
-  transition: 0.4s ease;
-  animation: fadeUp 1s ease forwards;
-  opacity: 0;
-}
-
-.card:nth-child(1){ animation-delay: 0.2s; }
-.card:nth-child(2){ animation-delay: 0.4s; }
-.card:nth-child(3){ animation-delay: 0.6s; }
-
-.card:hover {
-  transform: scale(1.05);
-}
-
-.card img {
-  width: 100%;
-  border-radius: 15px;
-  margin-bottom: 10px;
-}
-
-.card h3 {
-  margin-bottom: 5px;
-}
-
-.price {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-button {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 12px;
-  background: linear-gradient(45deg,#ff416c,#ff4b2b);
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
-}
-
-/* Floating Cart */
-.cart {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #ff416c;
-  padding: 15px;
-  border-radius: 50%;
-  font-size: 20px;
-  animation: pulse 2s infinite;
-}
-
-/* Animations */
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-}
-
-@keyframes fadeDown {
-  from { opacity:0; transform: translateY(-30px);}
-  to { opacity:1; transform: translateY(0);}
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(255,65,108,0.7);}
-  70% { box-shadow: 0 0 0 20px rgba(255,65,108,0);}
-  100% { box-shadow: 0 0 0 0 rgba(255,65,108,0);}
+button{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:#ff416c;
+  color:white;
+  font-size:16px;
 }
 </style>
 </head>
+
 <body>
 
 <div class="header">
-  <h1>🍣 Katana Sushi</h1>
-  <p>Premium Japanese Food</p>
+🍣 Katana Sushi
 </div>
 
-<div class="products">
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1604908176997-4318b7c0c2c5" />
-    <h3>Philadelphia Roll</h3>
-    <div class="price">$12</div>
-    <button>Buyurtma berish</button>
-  </div>
-
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1562967916-eb82221dfb92" />
-    <h3>Dragon Roll</h3>
-    <div class="price">$15</div>
-    <button>Buyurtma berish</button>
-  </div>
-
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" />
-    <h3>California Roll</h3>
-    <div class="price">$10</div>
-    <button>Buyurtma berish</button>
-  </div>
+<div id="products">
+Yuklanmoqda...
 </div>
 
-<div class="cart">🛒</div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script>
-const supabaseUrl = "https://ncwbbdnmsdokaxlxfnnt.supabase.co"
-const supabaseKey = "sb_publishable_K3C6PeYO3Js8F6vYP1mJUg_jsC5h55k"
 
-const client = supabase.createClient(supabaseUrl, supabaseKey)
-
-// TEST — productlarni olish
-async function loadProducts(){
-  const { data, error } = await client
-    .from('products')
-    .select('*')
-
-  console.log(data)
-}
-
-loadProducts()
-</script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
 const supabase = window.supabase.createClient(
-  "https://ncwbbdnmsdokaxlxfnnt.supabase.co",
-  "sb_publishable_K3C6PeYO3Js8F6vYP1mJUg_jsC5h55k"
+"https://ncwbbdnmsdokaxlxfnnt.supabase.co",
+"sb_publishable_K3C6PeYO3Js8F6vYP1mJUg_jsC5h55k"
 );
 
-async function loadProducts() {
-  const { data, error } = await supabase
-    .from("products")
-    .select("*");
+async function loadProducts(){
 
-  console.log(data);
+const {data, error} = await supabase
+.from("products")
+.select("*");
+
+const box = document.getElementById("products");
+
+if(error){
+box.innerHTML = "XATO: " + error.message;
+return;
+}
+
+if(data.length === 0){
+box.innerHTML = "Mahsulot topilmadi";
+return;
+}
+
+box.innerHTML = data.map(p => `
+<div class="card">
+<h3>${p.name}</h3>
+<p>$${p.price}</p>
+<button>Buyurtma berish</button>
+</div>
+`).join("");
+
 }
 
 loadProducts();
+
 </script>
+
 </body>
 </html>
