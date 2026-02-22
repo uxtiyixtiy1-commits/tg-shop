@@ -160,6 +160,24 @@ button:hover {
 </div>
 
 <div class="cart">🛒</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<script>
+const supabaseUrl = "https://ncwbbdnmsdokaxlxfnnt.supabase.co"
+const supabaseKey = "sb_publishable_K3C6PeYO3Js8F6vYP1mJUg_jsC5h55k"
+
+const client = supabase.createClient(supabaseUrl, supabaseKey)
+
+// TEST — productlarni olish
+async function loadProducts(){
+  const { data, error } = await client
+    .from('products')
+    .select('*')
+
+  console.log(data)
+}
+
+loadProducts()
+</script>
 </body>
 </html>
